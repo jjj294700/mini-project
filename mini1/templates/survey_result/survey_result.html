@@ -1,0 +1,195 @@
+{% extends "page_modules/base.html" %}
+
+{% block content %}
+<!--begin::App Content-->
+<div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">본인 설문 결과</h3></div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>항목</th>
+                    <th>응답</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="align-middle">
+                    <td>1.</td>
+                    <td>이름</td>
+                    <td>{{ name }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>2.</td>
+                    <td>성별</td>
+                    <td>{{ gender }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>3.</td>
+                    <td>나이</td>
+                    <td>{{ age }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>4.</td>
+                    <td>직업</td>
+                    <td>{{ occupation }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>5.</td>
+                    <td>당뇨병 병력 여부</td>
+                    <td>{{ diabetes }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>6.</td>
+                    <td>음주 여부</td>
+                    <td>{{ alcohol }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>7.</td>
+                    <td>암 병력 여부</td>
+                    <td>{{ cancer }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>8.</td>
+                    <td>현재 흡연 여부</td>
+                    <td>{{ smoking_now }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>9.</td>
+                    <td>과거 흡연 여부</td>
+                    <td>{{ smoking_past }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>10.</td>
+                    <td>고혈압 병력 여부</td>
+                    <td>{{ hypertension }}</td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>11.</td>
+                    <td>심장질환 병력 여부</td>
+                    <td>{{ heart_disease }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+  
+
+
+<!--begin::App Content-->
+<div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title"> 설문조사에 따른 위험도 </h3></div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px"></th>
+                    <th>종류</th>
+                    <th>위험도</th>
+                    <th style="width: 70px">위험도</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="align-middle">
+                    <td>1.</td>
+                    <td>간암</td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div
+                          class="progress-bar progress-bar-danger"
+                          style="width: 55%"
+                        ></div>
+                      </div>
+                    </td>
+                    <td><span class="badge text-bg-danger">55%</span></td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>2.</td>
+                    <td>폐암</td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar text-bg-warning" style="width: 70%"></div>
+                      </div>
+                    </td>
+                    <td><span class="badge text-bg-warning">70%</span></td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>3.</td>
+                    <td>신장암</td>
+                    <td>
+                      <div class="progress progress-xs progress-striped active">
+                        <div class="progress-bar text-bg-primary" style="width: 30%"></div>
+                      </div>
+                    </td>
+                    <td><span class="badge text-bg-primary">{{ kidney_risk }}%</span></td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>4.</td>
+                    <td>대장암</td>
+                    <td>
+                      <div class="progress progress-xs progress-striped active">
+                        <div class="progress-bar text-bg-success" style="width: 90%"></div>
+                      </div>
+                    </td>
+                    <td><span class="badge text-bg-success">90%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+
+  <div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+      <!--begin::Row-->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header"><h3 class="card-title">설문 결과 시각화</h3></div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <!-- 'static' 대신 url_for('static', filename='파일명') 사용 -->
+              <img src="/static/images/risk_graph.png" alt="설문 결과 시각화" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end::Row-->
+    </div>
+    <!--end::Container-->
+  </div>
+     
+  {% endblock %}
+
+
