@@ -1,0 +1,181 @@
+{% extends "page_modules/base.html" %}
+
+{% block content %}
+  <!--begin::Horizontal Form-->
+  <div class="card card-warning card-outline mb-4">
+    <!--begin::Header-->
+    <div class="card-header">
+      <div class="card-title">위암 라이브러리 환자 설문조사</div>
+    </div>
+    <!--end::Header-->
+    
+    <!--begin::Form-->
+    <form action="{{ url_for('survey_result.survey_result') }}" method="post">
+      <!--begin::Body-->
+      <div class="card-body">
+        <!-- 이름 -->
+        <div class="row mb-3">
+          <label for="name" class="col-sm-2 col-form-label">이름</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" required style="text-align: center;">
+          </div>
+        </div>
+
+        <!-- 성별 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">성별</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="male" name="gender" value="남" required>
+              <label class="form-check-label" for="male">남</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="female" name="gender" value="여" required>
+              <label class="form-check-label" for="female">여</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 나이 -->
+        <div class="row mb-3">
+          <label for="age" class="col-sm-2 col-form-label">나이</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="age" name="age" required min="1" max="120" placeholder="나이를 입력해주세요">
+          </div>
+        </div>
+
+        <!-- 직업 -->
+        <div class="row mb-3">
+          <label for="occupation" class="col-sm-2 col-form-label">직업</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="occupation" name="occupation" required>
+              <option value="">직업을 선택하세요</option>
+              <option value="전문직">전문직</option>
+              <option value="자유업">자유업</option>
+              <option value="회사원">회사원</option>
+              <option value="교사">교사</option>
+              <option value="무직">무직</option>
+              <option value="학생">학생</option>
+              <option value="주부">주부</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 당뇨병 병력 여부 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">당뇨병 병력 여부</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="diabetes_yes" name="diabetes" value="yes" required>
+              <label class="form-check-label" for="diabetes_yes">예</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="diabetes_no" name="diabetes" value="no" required>
+              <label class="form-check-label" for="diabetes_no">아니오</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 음주 여부 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">음주 여부</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="alcohol_yes" name="alcohol" value="yes" required>
+              <label class="form-check-label" for="alcohol_yes">예</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="alcohol_no" name="alcohol" value="no" required>
+              <label class="form-check-label" for="alcohol_no">아니오</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 암 병력 여부 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">암 병력 여부</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="cancer_yes" name="cancer" value="yes" required>
+              <label class="form-check-label" for="cancer_yes">예</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="cancer_no" name="cancer" value="no" required>
+              <label class="form-check-label" for="cancer_no">아니오</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 현재 흡연 여부 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">현재 흡연 여부</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="smoking_now_yes" name="smoking_now" value="yes" required>
+              <label class="form-check-label" for="smoking_now_yes">예</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="smoking_now_no" name="smoking_now" value="no" required>
+              <label class="form-check-label" for="smoking_now_no">아니오</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 과거 흡연 여부 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">과거 흡연 여부</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="smoking_past_yes" name="smoking_past" value="yes" required>
+              <label class="form-check-label" for="smoking_past_yes">예</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="smoking_past_no" name="smoking_past" value="no" required>
+              <label class="form-check-label" for="smoking_past_no">아니오</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 고혈압 병력 여부 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">고혈압 병력 여부</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="hypertension_yes" name="hypertension" value="yes" required>
+              <label class="form-check-label" for="hypertension_yes">예</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="hypertension_no" name="hypertension" value="no" required>
+              <label class="form-check-label" for="hypertension_no">아니오</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 심장질환 병력 여부 -->
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">심장질환 병력 여부</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="heart_disease_yes" name="heart_disease" value="yes" required>
+              <label class="form-check-label" for="heart_disease_yes">예</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="heart_disease_no" name="heart_disease" value="no" required>
+              <label class="form-check-label" for="heart_disease_no">아니오</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 제출 버튼 -->
+        <div class="card-footer">
+          <button type="submit" class="btn btn-warning">제출</button>
+        </div>
+      </div>
+      <!--end::Body-->
+    </form>
+    <!--end::Form-->
+  </div>
+  <!--end::Horizontal Form-->
+
+{% endblock %}
