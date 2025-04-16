@@ -14,9 +14,9 @@ def kidney_cancer_info():
 def lung_cancer_info():
     return render_template('page_modules/lung_cancer.html')
 
-@main_bp.route("/liver_cancer")
-def liver_cancer():
-    return render_template('page_modules/liver_cancer.html')
+@main_bp.route("/stomach_cancer")
+def stomach_cancer():
+    return render_template('page_modules/stomach_cancer.html')
 
 @main_bp.route("/colorectal_cancer")
 def colorectal_cancer():
