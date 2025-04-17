@@ -421,7 +421,7 @@
                 <div class="small-box text-bg-primary">
                   <div class="inner">
                     <h3>위암</h3>
-                    <p>liver</p>
+                    <p>1기 위암 생존율 97.4% <br> 2기 위암 생존율 50.4%...</p>
                   </div>
                   <img src="{{ url_for('static', filename='dist/assets/img/liver.png') }}" alt="liver" class="small-box-icon" />
 
@@ -429,7 +429,7 @@
                     href="/stomach_cancer"
                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                   >
-                    More info <i class="bi bi-link-45deg"></i>
+                    더 알아보기... <i class="bi bi-link-45deg"></i>
                   </a>
                 </div>
                 <!--end::Small Box Widget 1-->
@@ -440,7 +440,8 @@
                 <div class="small-box text-bg-success">
                   <div class="inner">
                     <h3>폐암</h3>
-                    <p>lung</p>
+                    <p>1기 생존율 79.8%<br> 2기 생존율 50.4%...</p>
+
                   </div>
                   <img src="{{ url_for('static', filename='dist/assets/img/lung.png') }}" alt="liver" class="small-box-icon" />
 
@@ -448,7 +449,7 @@
                     href="/lung_cancer"
                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                   >
-                    More info <i class="bi bi-link-45deg"></i>
+                    더 알아보기... <i class="bi bi-link-45deg"></i>
                   </a>
                 </div>
                 <!--end::Small Box Widget 2-->
@@ -459,7 +460,7 @@
                 <div class="small-box text-bg-warning">
                   <div class="inner">
                     <h3>신장암</h3>
-                    <p>1기 사망률 98.1% <br> 2기 사망률 83.2%...  </p>
+                    <p>1기 생존율 98.1% <br> 2기 생존율 83.2%...  </p>
                   </div>
                   <img src="{{ url_for('static', filename='dist/assets/img/kidney.png') }}" alt="kidney" class="small-box-icon mt-2" />
 
@@ -478,7 +479,7 @@
                 <div class="small-box text-bg-danger">
                   <div class="inner">
                     <h3>대장암</h3>
-                    <p>colon</p>
+                    <p>1기 대장암 생존율 79.8% <br> 2기 대장암 생존율 82.1%...</p>
                   </div>
                   <img src="{{ url_for('static', filename='dist/assets/img/colon.png') }}" alt="liver" class="small-box-icon" />
 
@@ -486,7 +487,7 @@
                     href="/colorectal_cancer"
                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                   >
-                    More info <i class="bi bi-link-45deg"></i>
+                    더 알아보기... <i class="bi bi-link-45deg"></i>
                   </a>
                 </div>
                 <!--end::Small Box Widget 4-->
@@ -560,11 +561,6 @@
       ></script>
   
       <script is:inline>
-        // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-        // IT'S ALL JUST JUNK FOR DEMO
-        // ++++++++++++++++++++++++++++++++++++++++++
-  
-
   
         const sales_chart_options = {
           series: [
