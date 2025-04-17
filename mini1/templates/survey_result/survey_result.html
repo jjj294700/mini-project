@@ -140,10 +140,13 @@
                     <td>신장암</td>
                     <td>
                       <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar text-bg-primary" style="width: 30%"></div>
+                        <div class="progress-bar text-bg-primary" style="width: {{ kidney_risk ~ '%' }}"></div>
                       </div>
                     </td>
-                    <td><span class="badge text-bg-primary">{{ kidney_risk }}%</span></td>
+                    <td>
+                      <span class="badge text-bg-primary">{{ kidney_risk }}%</span>
+                      <span class="ms-2 text-muted small">{{ kidney_score }}</span>
+                    </td>
                   </tr>
                   <tr class="align-middle">
                     <td>4.</td>
