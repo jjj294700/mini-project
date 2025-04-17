@@ -13,3 +13,9 @@ def login():
         # Handle login here (authentication logic)
         return "Logged in"
     return render_template("auth/login.html")  
+
+@auth_bp.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        return "register"
+    return render_template("auth/register.html")
