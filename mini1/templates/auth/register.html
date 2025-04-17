@@ -1,22 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <!--begin::Head-->
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Cancer | Register Page v2</title>
-    <!--begin::Primary Meta Tags-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="Cancer | Register Page v2" />
-    <meta name="author" content="ColorlibHQ" />
-    <meta
-      name="description"
-      content="Cancer is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS."
-    />
-    <meta
-      name="keywords"
-      content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"
-    />
-    <!--end::Primary Meta Tags-->
+{% extends "auth/base.html" %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-center" style="min-height: 100vh;">
+    <div class="align-self-start mt-5" style="width: 100%; max-width: 400px;">
+
     <!--begin::Fonts-->
     <link
       rel="stylesheet"
@@ -56,8 +44,8 @@
             href="{{ url_for('main.home') }}"
             class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover"
           >
-            <h1 class="mb-0">Cancer</h1>
-          </a>
+            <h1 class="mb-0">cancer</h1>
+          </a> 회원가입
         </div>
         <div class="card-body register-card-body">
           <form action="../index3.html" method="post">
@@ -88,7 +76,7 @@
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                   <label class="form-check-label" for="flexCheckDefault">
-                    I agree to the <a href="#">terms</a>
+                    <a href="#">약관</a>에 동의합니다.
                   </label>
                 </div>
               </div>
@@ -103,7 +91,7 @@
             <!--end::Row-->
           </form>
           <p class="mb-0">
-            <a href="login.html" class="link-primary text-center"> I already have a membership </a>
+            <a href="{{ url_for('auth.login') }}" class="link-primary text-center"> 이미 회원가입을 하셨나요? </a>
           </p>
         </div>
         <!-- /.register-card-body -->
@@ -155,4 +143,7 @@
     <!--end::Script-->
   </body>
   <!--end::Body-->
-</html>
+
+  </div>
+</div>
+{% endblock %}

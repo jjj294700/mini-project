@@ -25,3 +25,11 @@ def colorectal_cancer():
 @main_bp.route("/survey")
 def survey():
     return render_template('page_modules/survey.html')
+
+@main_bp.route("/login")
+def login():
+    return render_template('auth/login.html')
+
+@main_bp.route("/register")
+def register():
+    return render_template('auth/register.html')
