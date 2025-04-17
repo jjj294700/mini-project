@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>암 위험도 설문</title>
+</head>
+<body>
+    <h1>암 위험도 설문</h1>
+    <form method="POST">
+        <!-- 이름 -->
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <!-- 성별 -->
+        <label for="gender">성별:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">남성</option>
+            <option value="female">여성</option>
+        </select><br><br>
+
+        <!-- 나이 -->
+        <label for="age">나이:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <!-- 음주 -->
+        <label for="alcohol">음주 여부:</label>
+        <select id="alcohol" name="alcohol" required>
+            <option value="yes">예</option>
+            <option value="no">아니요</option>
+        </select><br><br>
+
+        <!-- 음주량 -->
+        <label for="drinking_amount">음주량 (병 단위):</label>
+        <input type="number" id="drinking_amount" name="drinking_amount" step="0.1" min="0" required><br><br>
+
+        <!-- 흡연 여부 -->
+        <label for="smoking_now">현재 흡연 여부:</label>
+        <select id="smoking_now" name="smoking_now" required>
+            <option value="yes">예</option>
+            <option value="no">아니요</option>
+        </select><br><br>
+
+        <!-- 흡연량 -->
+        <label for="smoking_amount">흡연량 (개비):</label>
+        <input type="number" id="smoking_amount" name="smoking_amount" min="0" required><br><br>
+
+        <!-- 과거 흡연 여부 -->
+        <label for="smoking_past">과거 흡연 여부:</label>
+        <select id="smoking_past" name="smoking_past" required>
+            <option value="yes">예</option>
+            <option value="no">아니요</option>
+        </select><br><br>
+
+        <!-- 당뇨병 -->
+        <label for="diabetes">당뇨병 여부:</label>
+        <select id="diabetes" name="diabetes" required>
+            <option value="yes">예</option>
+            <option value="no">아니요</option>
+        </select><br><br>
+
+        <!-- 고혈압 -->
+        <label for="hypertension">고혈압 여부:</label>
+        <select id="hypertension" name="hypertension" required>
+            <option value="yes">예</option>
+            <option value="no">아니요</option>
+        </select><br><br>
+
+        <!-- 심혈관 질환 -->
+        <label for="heart_disease">심혈관 질환 여부:</label>
+        <select id="heart_disease" name="heart_disease" required>
+            <option value="yes">예</option>
+            <option value="no">아니요</option>
+        </select><br><br>
+
+        <!-- 암 발병 이력 -->
+        <label for="cancer">과거 암 발병 이력:</label>
+        <select id="cancer" name="cancer" required>
+            <option value="yes">예</option>
+            <option value="no">아니요</option>
+        </select><br><br>
+
+        <button type="submit">제출</button>
+    </form>
+</body>
+</html>
