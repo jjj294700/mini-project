@@ -43,12 +43,11 @@ def calculate_occupation_score(occupation):
         '전문직': 0.1,
         '교사': 0.1,
         '학생': 0.1,
-        '군인': 0.1,
-        '기타': 0.1
+        '군인': 0.1
     }
-    return occupation_risk_map.get(occupation, 0.0)
+    return occupation_risk_map.get(occupation, 0.1)
 
-# 신장암 직업 점수 계산 (신장암에만 적용)
+# 신장암 직업 점수 계산
 def calculate_kidney_cancer_occupation_score(occupation):
     occupation_risk_map = {
         '무직': 0.5,
@@ -63,19 +62,44 @@ def calculate_kidney_cancer_occupation_score(occupation):
     }
     return occupation_risk_map.get(occupation, 0.25)
 
-# 위험도 계산 함수들 (4.5점 만점 기준, 음주량/흡연량 반영)
-def calculate_stomach_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount, diabetes, hypertension, heart_disease, cancer_history, age, occupation):
-    score = 0.0
-    # 나이에 따른 점수 (모든 암에 공통)
-    score += calculate_age_score(age)
-    
-    # 직업에 따른 점수 (위암에만 적용)
-    score += calculate_occupation_score(occupation)
+# 대장암 직업 점수 계산
+def calculate_colorectal_cancer_occupation_score(occupation):
+    occupation_risk_map = {
+        '무직': 0.5,
+        '기타': 0.5,
+        '주부': 0.25,
+        '자유업': 0.25,
+        '회사원': 0.25,
+        '전문직': 0.1,
+        '교사': 0.1,
+        '학생': 0.1,
+        '군인': 0.1,
+    }
+    return occupation_risk_map.get(occupation, 0.1)
 
-    # 기존 점수 계산
+# 폐암 직업 점수 계산
+def calculate_lung_cancer_occupation_score(occupation):
+    occupation_risk_map = {
+        '무직': 0.5,
+        '기타': 0.5,
+        '주부': 0.25,
+        '자유업': 0.25,
+        '회사원': 0.25,
+        '전문직': 0.1,
+        '교사': 0.1,
+        '학생': 0.1,
+        '군인': 0.1,
+    }
+    return occupation_risk_map.get(occupation, 0.1)
+
+# 위험도 계산 함수들
+def calculate_stomach_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                   diabetes, hypertension, heart_disease, cancer_history, age, occupation):
+    score = 0.0
+    score += calculate_age_score(age)
+    score += calculate_occupation_score(occupation)
     if smoking_now == 'yes':
-        ratio = min(smoking_amount / 30.0, 1.0)
-        score += ratio * 0.5
+        score += min(smoking_amount / 30.0, 1.0) * 0.5
     if smoking_past == 'yes':
         score += 0.75
     if alcohol == 'yes':
@@ -84,44 +108,48 @@ def calculate_stomach_cancer_score(alcohol, smoking_now, smoking_past, smoking_a
     if hypertension == 'yes': score += 1
     if heart_disease == 'yes': score += 0.75
     if cancer_history == 'yes': score += 0.25
-    return min(score, 4.5)
+    return min(score, 7.0)
 
-def calculate_lung_cancer_score(smoking_now, smoking_past, smoking_amount, heart_disease, age, occupation):
+def calculate_lung_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                diabetes, hypertension, heart_disease, cancer_history, age, occupation):
     score = 0.0
-    # 나이에 따른 점수 (모든 암에 공통)
     score += calculate_age_score(age)
-
-    # 기존 점수 계산
     if smoking_now == 'yes':
-        ratio = min(smoking_amount / 30.0, 1.0)
-        score += ratio * 0.5
+        score += min(smoking_amount / 30.0, 1.0) * 0.5
     if smoking_past == 'yes':
-        score += 0.75
-    if heart_disease == 'yes': score += 1.0
-    return min(score, 4.5)
-
-def calculate_colorectal_cancer_score(alcohol, drinking_amount, diabetes, hypertension, cancer_history, age, occupation):
-    score = 0.0
-    # 나이에 따른 점수 (모든 암에 공통)
-    score += calculate_age_score(age)
-
-    # 기존 점수 계산
+        score += 1.0
     if alcohol == 'yes':
-        score += min(drinking_amount / 3.0, 1.0)
-    if diabetes == 'yes': score += 1.0
+        score += min(drinking_amount / 3.0, 1.0) * 1.0
+    if diabetes == 'yes': score += 0.25
     if hypertension == 'yes': score += 1.0
+    if heart_disease == 'yes': score += 0.25
     if cancer_history == 'yes': score += 0.5
-    return min(score, 4.5)
+    score += calculate_lung_cancer_occupation_score(occupation)
+    return min(score, 7.0)
 
-def calculate_kidney_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount, diabetes, hypertension, heart_disease, cancer_history, age, occupation):
+def calculate_colorectal_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                      diabetes, hypertension, heart_disease, cancer_history, age, occupation):
     score = 0.0
-    # 나이에 따른 점수 (모든 암에 공통)
     score += calculate_age_score(age)
-
-    # 기존 점수 계산
     if smoking_now == 'yes':
-        ratio = min(smoking_amount / 30.0, 1.0)
-        score += ratio * 0.5
+        score += min(smoking_amount / 30.0, 1.0) * 0.5
+    if smoking_past == 'yes':
+        score += 1.0
+    if alcohol == 'yes':
+        score += min(drinking_amount / 3.0, 1.0) * 1.0
+    if diabetes == 'yes': score += 0.25
+    if hypertension == 'yes': score += 1.0
+    if heart_disease == 'yes': score += 0.25
+    if cancer_history == 'yes': score += 0.5
+    score += calculate_colorectal_cancer_occupation_score(occupation)
+    return min(score, 7.0)
+
+def calculate_kidney_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                  diabetes, hypertension, heart_disease, cancer_history, age, occupation):
+    score = 0.0
+    score += calculate_age_score(age)
+    if smoking_now == 'yes':
+        score += min(smoking_amount / 30.0, 1.0) * 0.5
     if smoking_past == 'yes':
         score += 0.75
     if alcohol == 'yes':
@@ -130,9 +158,8 @@ def calculate_kidney_cancer_score(alcohol, smoking_now, smoking_past, smoking_am
     if hypertension == 'yes': score += 1
     if heart_disease == 'yes': score += 0.25
     if cancer_history == 'yes': score += 0.25
-    # 신장암의 직업 점수 추가
     score += calculate_kidney_cancer_occupation_score(occupation)
-    return min(score, 4.5)
+    return min(score, 7.0)
 
 # 그래프 생성 함수
 def create_risk_graph(stomach, lung, kidney, colorectal):
@@ -153,6 +180,7 @@ def create_risk_graph(stomach, lung, kidney, colorectal):
     plt.savefig(img_path)
     plt.close()
 
+# 설문 결과 처리 라우트
 @survey_result_bp.route('/', methods=["GET", "POST"])
 def survey_result_page():
     if request.method == "POST":
@@ -170,12 +198,15 @@ def survey_result_page():
         occupation = request.form['occupation']
 
         # 점수 계산
-        stomach_score = calculate_stomach_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount, diabetes, hypertension, heart_disease, cancer_history, age, occupation)
+        stomach_score = calculate_stomach_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                                       diabetes, hypertension, heart_disease, cancer_history, age, occupation)
         lung_score = calculate_lung_cancer_score(smoking_now, smoking_past, smoking_amount, heart_disease, age, occupation)
-        colorectal_score = calculate_colorectal_cancer_score(alcohol, drinking_amount, diabetes, hypertension, cancer_history, age, occupation)
-        kidney_score = calculate_kidney_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount, diabetes, hypertension, heart_disease, age, occupation)
+        colorectal_score = calculate_colorectal_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                                             diabetes, hypertension, heart_disease, cancer_history, age, occupation)
+        kidney_score = calculate_kidney_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                                     diabetes, hypertension, heart_disease, cancer_history, age, occupation)
 
-        # MySQL에 결과 저장
+        # MySQL에 저장
         connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute(""" 
@@ -200,3 +231,4 @@ def survey_result_page():
         create_risk_graph(stomach_score, lung_score, kidney_score, colorectal_score)
 
     return render_template('survey/survey_form.html')
+
