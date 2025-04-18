@@ -82,10 +82,10 @@ def calculate_lung_cancer_occupation_score(occupation):
     occupation_risk_map = {
         '무직': 0.5,
         '기타': 0.5,
-        '주부': 0.25,
+        '주부': 0.5,
         '자유업': 0.25,
         '회사원': 0.25,
-        '전문직': 0.1,
+        '전문직': 0.25,
         '교사': 0.1,
         '학생': 0.1,
         '군인': 0.1,
@@ -120,10 +120,10 @@ def calculate_lung_cancer_score(alcohol, smoking_now, smoking_past, smoking_amou
         score += 1.0
     if alcohol == 'yes':
         score += min(drinking_amount / 3.0, 1.0) * 1.0
-    if diabetes == 'yes': score += 0.25
+    if diabetes == 'yes': score += 0.5
     if hypertension == 'yes': score += 1.0
     if heart_disease == 'yes': score += 0.25
-    if cancer_history == 'yes': score += 0.5
+    if cancer_history == 'yes': score += 0.25
     score += calculate_lung_cancer_occupation_score(occupation)
     return min(score, 7.0)
 
