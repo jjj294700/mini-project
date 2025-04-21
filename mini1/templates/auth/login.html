@@ -46,14 +46,10 @@
           </a> 로그인
         </div>
         <div class="card-body login-card-body">
-
           <form action="../index3.html" method="post">
-
-          <form action="{{ url_for('auth.login') }}" method="post">
-
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="loginEmail" name="email" type="email" class="form-control" placeholder="" required />
+                <input id="loginEmail" type="email" class="form-control" value="" placeholder="" />
                 <label for="loginEmail">Email</label>
               </div>
               <div class="input-group-text"><span class="bi bi-envelope"></span></div>

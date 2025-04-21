@@ -32,8 +32,4 @@ def login():
 
 @main_bp.route("/register")
 def register():
-
     return render_template('auth/register.html')
-
-    return render_template('auth/register.html')
-

@@ -35,12 +35,13 @@ def create_app(): #FLask가 웹 앱 시작할떄 호출하는 자동함수
     def survey():
         return render_template('page_modules/survey.html')
 
+
+
     @app.route('/survey_result', methods=['POST'])
     def survey_result():
 
         data = request.form  # 폼 데이터 가져오기
         print(data)  # 또는 데이터 처리 로직 추가
         return render_template('page_modules/survey_result.html')
-
 
     return app
