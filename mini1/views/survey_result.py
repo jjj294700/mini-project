@@ -200,7 +200,8 @@ def survey_result_page():
         # 점수 계산
         stomach_score = calculate_stomach_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
                                                        diabetes, hypertension, heart_disease, cancer_history, age, occupation)
-        lung_score = calculate_lung_cancer_score(smoking_now, smoking_past, smoking_amount, heart_disease, age, occupation)
+        lung_score = calculate_lung_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
+                                                             diabetes, hypertension, heart_disease, cancer_history, age, occupation)
         colorectal_score = calculate_colorectal_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
                                                              diabetes, hypertension, heart_disease, cancer_history, age, occupation)
         kidney_score = calculate_kidney_cancer_score(alcohol, smoking_now, smoking_past, smoking_amount, drinking_amount,
