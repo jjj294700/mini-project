@@ -38,6 +38,3 @@ def login():
 def register():
 
     return render_template('auth/register.html')
-
-    return render_template('auth/register.html')
-
