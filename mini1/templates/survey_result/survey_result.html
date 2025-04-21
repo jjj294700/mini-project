@@ -3,96 +3,112 @@
 {% block content %}
 <!--begin::App Content-->
 <div class="app-content">
-    <!--begin::Container-->
-    <div class="container-fluid">
-      <!--begin::Row-->
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card mb-4">
-            <div class="card-header"><h3 class="card-title">본인 설문 결과</h3></div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th style="width: 10px">#</th>
-                    <th>항목</th>
-                    <th>응답</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="align-middle">
-                    <td>1.</td>
-                    <td>이름</td>
-                    <td>{{ name }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>2.</td>
-                    <td>성별</td>
-                    <td>{{ gender }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>3.</td>
-                    <td>나이</td>
-                    <td>{{ age }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>4.</td>
-                    <td>직업</td>
-                    <td>{{ occupation }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>5.</td>
-                    <td>당뇨병 병력 여부</td>
-                    <td>{{ diabetes }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>6.</td>
-                    <td>음주 여부</td>
-                    <td>{{ alcohol }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>7.</td>
-                    <td>암 병력 여부</td>
-                    <td>{{ cancer }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>8.</td>
-                    <td>현재 흡연 여부</td>
-                    <td>{{ smoking_now }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>9.</td>
-                    <td>과거 흡연 여부</td>
-                    <td>{{ smoking_past }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>10.</td>
-                    <td>고혈압 병력 여부</td>
-                    <td>{{ hypertension }}</td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>11.</td>
-                    <td>심장질환 병력 여부</td>
-                    <td>{{ heart_disease }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-header"><h3 class="card-title">본인 설문 결과</h3></div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>항목</th>
+                  <th>응답</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1.</td><td>이름</td><td>{{ name }}</td></tr>
+                <tr><td>2.</td><td>성별</td><td>{{ gender }}</td></tr>
+                <tr><td>3.</td><td>나이</td><td>{{ age }}</td></tr>
+                <tr><td>4.</td><td>직업</td><td>{{ occupation }}</td></tr>
+                <tr><td>5.</td><td>당뇨병 병력</td><td>{{ diabetes }}</td></tr>
+                <tr><td>6.</td><td>음주 여부</td><td>{{ alcohol }}</td></tr>
+
+                {% if alcohol == 'yes' %}
+                <tr><td>7.</td><td>음주량</td><td>{{ drinking_amount }}병/주</td></tr>
+                {% endif %}
+
+                <tr><td>8.</td><td>암 병력</td><td>{{ cancer }}</td></tr>
+                <tr><td>9.</td><td>현재 흡연 여부</td><td>{{ smoking_now }}</td></tr>
+
+                {% if smoking_now == 'yes' %}
+                <tr><td>10.</td><td>흡연량</td><td>{{ smoking_amount }}개비/일</td></tr>
+                {% endif %}
+
+                <tr><td>11.</td><td>과거 흡연 여부</td><td>{{ smoking_past }}</td></tr>
+                <tr><td>12.</td><td>고혈압 병력</td><td>{{ hypertension }}</td></tr>
+                <tr><td>13.</td><td>심장질환 병력</td><td>{{ heart_disease }}</td></tr>
+              </tbody>
+            </table>
           </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
       </div>
-      <!--end::Row-->
     </div>
-    <!--end::Container-->
   </div>
-  
+</div>
 
-
-<!--begin::App Content-->
+<!-- 암 위험도 테이블 -->
 <div class="app-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-header"><h3 class="card-title">암 위험도</h3></div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>암 종류</th>
+                  <th>위험도</th>
+                  <th>수치</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td>위암</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-info" style="width: {{ (stomach_risk / 7 * 100) | round(1) }}%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-info">{{ (stomach_risk / 7 * 100) | round(1) }}%</span></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>폐암</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-warning" style="width: {{ (lung_risk / 7 * 100) | round(1) }}%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-warning">{{ (lung_risk / 7 * 100) | round(1) }}%</span></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>대장암</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-success" style="width: {{ (colorec_risk / 7 * 100) | round(1) }}%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-success">{{ (colorec_risk / 7 * 100) | round(1) }}%</span></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>신장암</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-primary" style="width: {{ (kidney_risk / 7 * 100) | round(1) }}%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-primary">{{ (kidney_risk / 7 * 100) | round(1) }}%</span></td>
+                </tr>
+              </tbody>
+            </table>
+
     <!--begin::Container-->
     <div class="container-fluid">
       <!--begin::Row-->
@@ -162,37 +178,27 @@
               </table>
             </div>
 
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!--end::Row-->
-    </div>
-    <!--end::Container-->
-  </div>
 
-  <div class="app-content">
-    <!--begin::Container-->
-    <div class="container-fluid">
-      <!--begin::Row-->
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card mb-4">
-            <div class="card-header"><h3 class="card-title">설문 결과 시각화</h3></div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <!-- 'static' 대신 url_for('static', filename='파일명') 사용 -->
-              <img src="/static/images/risk_graph.png" alt="설문 결과 시각화" class="img-fluid">
-            </div>
           </div>
         </div>
       </div>
-      <!--end::Row-->
     </div>
-    <!--end::Container-->
   </div>
-     
-  {% endblock %}
+</div>
 
-
+<!-- 이미지 시각화 -->
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-header"><h3 class="card-title">설문 결과 시각화</h3></div>
+          <div class="card-body">
+            <img src="{{ url_for('static', filename='images/risk_graph.png') }}" alt="설문 결과 시각화" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
