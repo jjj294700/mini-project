@@ -40,3 +40,9 @@ def login():
             flash('이메일 또는 비밀번호가 잘못되었습니다.', 'danger')
     
     return render_template("auth/login.html")
+
+@auth_bp.route("/logout")
+def logout():
+    session.pop('user_id', None)  # 세션에서 사용자 정보 삭제
+    flash('로그아웃 성공!', 'success')
+    return redirect(url_for('main.home'))
