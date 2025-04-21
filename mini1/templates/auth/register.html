@@ -48,24 +48,24 @@
           </a> 회원가입
         </div>
         <div class="card-body register-card-body">
-          <form action="../index3.html" method="post">
+          <form action="{{ url_for('auth.register') }}" method="post">
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="registerFullName" type="text" class="form-control" placeholder="" />
+                <input id="registerFullName" type="text" class="form-control" placeholder="" name="username" />
                 <label for="registerFullName">이름</label>
               </div>
               <div class="input-group-text"><span class="bi bi-person"></span></div>
             </div>
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="registerEmail" type="email" class="form-control" placeholder="" />
+                <input id="registerEmail" type="email" class="form-control" placeholder="" name="email" />
                 <label for="registerEmail">Email</label>
               </div>
               <div class="input-group-text"><span class="bi bi-envelope"></span></div>
             </div>
             <div class="input-group mb-1">
               <div class="form-floating">
-                <input id="registerPassword" type="password" class="form-control" placeholder="" />
+                <input id="registerPassword" type="password" class="form-control" placeholder="" name="password" />
                 <label for="registerPassword">Password</label>
               </div>
               <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>

@@ -1,9 +1,13 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route("/")
 def home():
+    user_id = session.get('user_id')
+    if user_id:
+        # 사용자 정보가 있으면 보여주기 (예: user_id)
+        return render_template("page_modules/base.html", user_id=user_id)
     return render_template('page_modules/base.html')
 
 @main_bp.route("/kidney_cancer")
