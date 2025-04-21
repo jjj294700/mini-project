@@ -119,8 +119,7 @@
           <li class="nav-item d-none d-md-block"><a href="/" class="nav-link">Home</a></li>
           <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
         </ul>
-        <!--end::Start Navbar Links-->
-        <!--begin::End Navbar Links-->
+        
         <ul class="navbar-nav ms-auto">
           <!--begin::Navbar Search-->
           <li class="nav-item">
@@ -304,7 +303,6 @@
       <!--end::Container-->
     </nav>
     <!--end::Header-->
-    
     <!--begin::Sidebar-->
     <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
       <!--begin::Sidebar Brand-->
@@ -404,11 +402,6 @@
         </div>
         <!--end::App Content Header-->
         {% block content %}
-
-        
-        <div>
-          
-        </div>
         <!--begin::App Content-->
         <div class="app-content">
           <!--begin::Container-->
@@ -421,15 +414,15 @@
                 <div class="small-box text-bg-primary">
                   <div class="inner">
                     <h3>위암</h3>
-                    <p>1기 생존율 97.4% <br> 2기 생존율 50.4%...</p>
+                    <p>liver</p>
                   </div>
                   <img src="{{ url_for('static', filename='dist/assets/img/liver.png') }}" alt="liver" class="small-box-icon" />
 
                   <a
-                    href="/stomach_cancer"
+                    href="/liver-page"
                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                   >
-                    더 알아보기... <i class="bi bi-link-45deg"></i>
+                    More info <i class="bi bi-link-45deg"></i>
                   </a>
                 </div>
                 <!--end::Small Box Widget 1-->
@@ -440,16 +433,15 @@
                 <div class="small-box text-bg-success">
                   <div class="inner">
                     <h3>폐암</h3>
-                    <p>1기 생존율 79.8%<br> 2기 생존율 50.4%...</p>
-
+                    <p>lung</p>
                   </div>
                   <img src="{{ url_for('static', filename='dist/assets/img/lung.png') }}" alt="liver" class="small-box-icon" />
 
                   <a
-                    href="/lung_cancer"
+                    href="/lung-page"
                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                   >
-                    더 알아보기... <i class="bi bi-link-45deg"></i>
+                    More info <i class="bi bi-link-45deg"></i>
                   </a>
                 </div>
                 <!--end::Small Box Widget 2-->
@@ -460,15 +452,15 @@
                 <div class="small-box text-bg-warning">
                   <div class="inner">
                     <h3>신장암</h3>
-                    <p>1기 생존율 98.1% <br> 2기 생존율 83.2%...  </p>
+                    <p>kidney</p>
                   </div>
-                  <img src="{{ url_for('static', filename='dist/assets/img/kidney.png') }}" alt="kidney" class="small-box-icon mt-2" />
+                  <img src="{{ url_for('static', filename='dist/assets/img/kidney.png') }}" alt="liver" class="small-box-icon" />
 
                   <a
-                    href="/kidney_cancer"
+                    href="/kidney-page"
                     class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
                   >
-                    더 알아보기... <i class="bi bi-link-45deg"></i>
+                    More info <i class="bi bi-link-45deg"></i>
                   </a>
                 </div>
                 <!--end::Small Box Widget 3-->
@@ -479,15 +471,15 @@
                 <div class="small-box text-bg-danger">
                   <div class="inner">
                     <h3>대장암</h3>
-                    <p>1기 생존율 94.0% <br> 2기 생존율 82.1%...</p>
+                    <p>colon</p>
                   </div>
                   <img src="{{ url_for('static', filename='dist/assets/img/colon.png') }}" alt="liver" class="small-box-icon" />
 
                   <a
-                    href="/colorectal_cancer"
+                    href="/colon-page"
                     class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                   >
-                    더 알아보기... <i class="bi bi-link-45deg"></i>
+                    More info <i class="bi bi-link-45deg"></i>
                   </a>
                 </div>
                 <!--end::Small Box Widget 4-->
@@ -498,38 +490,6 @@
 
           </div>
           <!--end::Container-->
-              
-          <div class="card-body">
-            <div class="d-flex">
-              <p class="d-flex flex-column">
-                <span class="fw-bold fs-5">암발생 시기에따른 생존율</span>
-              </p>
-              <p class="ms-auto d-flex flex-column text-end">
-                <span class="text-success">
-                </span>
-                <span class="text-secondary">기간2018~2022년</span>
-              </p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <div id="sales-chart"></div>
-            </div>
-
-            <div class="d-flex flex-row justify-content-end">
-              <span class="me-2">
-                <i class="bi bi-square-fill" style="color: #0d6efd;"></i> 1기
-              </span>
-            
-              <span class="me-2">
-                <i class="bi bi-square-fill" style="color: #20c997;"></i> 2기
-              </span>
-            
-              <span>
-                <i class="bi bi-square-fill" style="color: #ffc107;"></i> 3기
-              </span>
-            </div>
-          </div>
-        </div>
         </div>
         <!--end::App Content-->
 
@@ -538,103 +498,19 @@
       <!--begin::Footer-->
       <footer class="app-footer">
         <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline"></div>
+        <div class="float-end d-none d-sm-inline">Anything you want</div>
         <!--end::To the end-->
        <!--end::To the end-->
         <!--begin::Copyright-->
+        <strong>
+            Copyright &copy; 2014-2024&nbsp;
+            <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
+          </strong>
           All rights reserved.
           <!--end::Copyright-->
         </footer>
         <!--end::Footer-->
     </div>
-    
-
-      <Scripts path={path} />
-  
-      <!-- OPTIONAL SCRIPTS -->
-  
-      <!-- apexcharts -->
-      <script
-        src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
-        integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
-        crossorigin="anonymous"
-      ></script>
-  
-      <script is:inline>
-  
-        const sales_chart_options = {
-          series: [
-            {
-              name: "1기",
-              data: [100, 94, 80, 99, 97, 100, 62, 47, 50, 98],
-            },
-            {
-              name: "2기",
-              data: [100, 82, 50, 93, 62, 100, 25, 23, 35, 83],
-            },
-            {
-              name: "3기",
-              data: [35, 20, 13, 49, 8, 50, 4, 3, 4, 21],
-            },
-          ],
-          chart: {
-            type: "bar",
-            height: 350,
-          },
-          plotOptions: {
-            bar: {
-              horizontal: false,
-              columnWidth: "50%",
-              endingShape: "rounded",
-            },
-          },
-          legend: {
-            show: false,
-          },
-          colors: ["#0d6efd", "#20c997", "#ffc107"],
-          dataLabels: {
-            enabled: false,
-          },
-          stroke: {
-            show: true,
-            width: 2,
-            colors: ["transparent"],
-          },
-          xaxis: {
-            categories: [
-              "갑상선",
-              "대장",
-              "폐",
-              "유방",
-              "위",
-              "전립선",
-              "간",
-              "췌장",
-              "담낭",
-              "신장"
-            ],
-          },
-          fill: {
-            opacity: 1,
-          },
-          tooltip: {
-            y: {
-              formatter: function (val) {
-                return  val + "% " + " 생존율";
-              },
-            },
-          },
-        };
-  
-        const sales_chart = new ApexCharts(
-          document.querySelector("#sales-chart"),
-          sales_chart_options
-        );
-        sales_chart.render();
-      </script>
-      <!--end::Script-->
-    </body><!--end::Body-->
-  </html>
     {% endblock %}
     <!--end::App Wrapper-->
       <!--begin::Script-->
